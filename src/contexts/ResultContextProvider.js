@@ -1,8 +1,7 @@
 import React, { createContext, useContext, useState } from "react";
-import axios from "axios";
 const ResultContext = createContext();
 
-const baseUrl = "https://google-search3.p.rapidapi.com/api/v1";
+const baseUrl = "https://google-search1.p.rapidapi.com/google-search";
 
 export const ResultContextProvider = ({ children }) => {
   const [results, setResults] = useState([]);
@@ -12,14 +11,18 @@ export const ResultContextProvider = ({ children }) => {
   const getResults = async (type) => {
     setIsLoading(true);
 
-    const res = await axios.get(`${baseUrl}${type}`, {
+    const res = await fetch(`${baseUrl}${baseUrl}`, {
+      method: "GET",
       headers: {
         "x-rapidapi-host": "google-search1.p.rapidapi.com",
-        "x-rapidapi-key": "90646c5694mshe72d0ccf61a2548p137719jsn21c47dd5f3f3",
+        "x-rapidapi-key": process.env.REACT_APP_GOOGLE_SEARCH_API_KEY,
       },
     });
 
-    setResults(res);
+    const data = await res.json();
+    console.log(data);
+
+    setResults(data);
     setIsLoading(false);
   };
 
