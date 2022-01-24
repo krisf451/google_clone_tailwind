@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import ReactPlayer from "react-player";
+//test change one
 
 import { useResultContext } from "../contexts/ResultContextProvider";
 import Loading from "./Loading";
@@ -9,9 +10,9 @@ const Results = () => {
   const { getResults, results, searchTerm, isLoading } = useResultContext();
   const location = useLocation();
 
-  useEffect(() => {
-    getResults("/search/q=JavaScript Mastery&num=40");
-  }, []);
+  // useEffect(() => {
+  //   getResults("/search/q=JavaScript Mastery&num=40");
+  // }, []);
 
   if (isLoading) return <Loading />;
 
