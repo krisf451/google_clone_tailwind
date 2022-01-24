@@ -6,14 +6,14 @@ import { useResultContext } from "../contexts/ResultContextProvider";
 import Loading from "./Loading";
 
 const Results = () => {
-  // const { getResults, results, searchTerm, isLoading } = useResultContext();
+  const { getResults, results, searchTerm, isLoading } = useResultContext();
   const location = useLocation();
 
-  // useEffect(() => {
-  //   getResults("/search/q=JavaScript Mastery&num=40");
-  // }, []);
+  useEffect(() => {
+    getResults("/search/q=JavaScript Mastery&num=40");
+  }, []);
 
-  // if (isLoading) return <Loading />;
+  if (isLoading) return <Loading />;
 
   console.log(location.pathname);
 
